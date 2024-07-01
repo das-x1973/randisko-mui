@@ -4,17 +4,25 @@
 
 import React, { useState } from 'react';
 import { BottomNavigation, BottomNavigationAction, Paper, Box } from '@mui/material';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 const NavBar = () => {
   const [value, setValue] = useState(0);
-  const { status, data: session } = useSession();
+  const { status } = useSession();
+
+  const navigationActions = [
+    { label: 'Domov', icon: <HomeIcon />, href: '/' },
+    { label: 'Správy', icon: <ChatBubbleIcon />, href: '/spravy', authRequired: true },
+    { label: 'Odhlásiť', icon: <LogoutIcon />, href: '/api/auth/signout', authRequired: true },
+    { label: 'Prihlásiť', icon: <LoginIcon />, href: '/api/auth/signin', authRequired: false },
+    { label: 'Registrovať', icon: <PersonAddIcon />, href: '/auth/registracia', authRequired: false },
+  ];
 
   return (
     <Box sx={{ pb: 7 }}>
@@ -26,18 +34,19 @@ const NavBar = () => {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} href="/" />
-          {status === 'authenticated' ? (
-            <>
-              <BottomNavigationAction label="Messages" icon={<ChatBubbleIcon />} component={Link} href="/spravy" />
-              <BottomNavigationAction label="Logout" icon={<ExitToAppIcon />} component={Link} href="/api/auth/signout" />
-            </>
-          ) : (
-            <>
-              <BottomNavigationAction label="Login" icon={<RestoreIcon />} component={Link} href="/api/auth/signin" />
-              <BottomNavigationAction label="Register" icon={<FavoriteIcon />} component={Link} href="/auth/registracia" />
-            </>
-          )}
+          {navigationActions.map((action, index) => (
+            (status === 'authenticated' && action.authRequired !== false) ||
+            (status !== 'authenticated' && action.authRequired !== true) ? (
+              <BottomNavigationAction
+                key={index}
+                label={action.label}
+                icon={action.icon}
+                component={Link}
+                href={action.href}
+                showLabel
+              />
+            ) : null
+          ))}
         </BottomNavigation>
       </Paper>
     </Box>
