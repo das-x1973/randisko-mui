@@ -1,29 +1,44 @@
 // app/layout.tsx
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import theme from "@/app/lib/theme";
-import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+
+import type { Metadata } from "next";
+import { ThemeProvider as MuiThemeProvider, CssBaseline } from "@mui/material";
+import theme from "@/app/lib/theme";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import "./globals.css";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import NavBar from "./NavBar";
+import AuthProvider from "./auth/AuthProvider";
+import { NextThemeProvider } from "./ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Randisko",
   description: "Viac ako zoznamka ...",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
+      <body>
+        <AuthProvider>
+          <NextThemeProvider>
+            <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+              <MuiThemeProvider theme={theme}>
+                <CssBaseline />
+                <NavBar />
+                {children}
+              </MuiThemeProvider>
+            </AppRouterCacheProvider>
+          </NextThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
