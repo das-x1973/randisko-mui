@@ -1,6 +1,7 @@
 // lib/theme.ts
 
 'use client'; 
+
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -10,6 +11,10 @@ const theme = createTheme({
     },
     secondary: {
       main: '#ff4081',
+    },
+    text: {
+      primary: '#000000',  
+      secondary: '#757575',  
     },
   },
   typography: {
