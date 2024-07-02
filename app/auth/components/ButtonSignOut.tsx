@@ -2,52 +2,29 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { Button,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Box,} from '@mui/material';
+import { Button, Box } from '@mui/material';
 
 const ButtonSignOut = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const router = useRouter();
 
   const handleSignOut = () => {
     signOut();
-    setOpen(false);
+  };
+
+  const handleCancel = () => {
+    router.back();
   };
 
   return (
-    <Box>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+    <Box display="flex" gap={2}>
+      <Button variant="outlined" color="primary" onClick={handleSignOut}>
         Odhlásiť
       </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">Odhlásiť sa</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Naozaj sa chcete odhlásiť?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Zrušiť
-          </Button>
-          <Button onClick={handleSignOut} color="primary" autoFocus>
-            Odhlásiť
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <Button variant="outlined" color="secondary" onClick={handleCancel}>
+        Zrušiť
+      </Button>
     </Box>
   );
 };

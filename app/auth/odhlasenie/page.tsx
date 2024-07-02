@@ -13,6 +13,8 @@ export default function LogOutPage() {
       height="100vh"
       textAlign="center"
       gap={3}
+      bgcolor="background.default"
+      p={3}
     >
       <Typography variant="h5" color="primary" fontWeight="bold">
         Skutočne sa chcete odhlásiť?
