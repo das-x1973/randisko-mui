@@ -20,7 +20,7 @@ const ButtonX = () => {
       onClick={handleSignIn}
       sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
     >
-      X
+      Twitter
     </Button>
   );
 };

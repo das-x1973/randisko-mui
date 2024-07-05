@@ -4,7 +4,7 @@
 import React from 'react';
 import { Container, Box, Typography, Link } from "@mui/material";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../app/api/auth/[...nextauth]/authOptions";
+import { authOptions } from "./api/auth/[...nextauth]/authOptions";
 
 export default async function HomePage() {
   const session = await getServerSession(authOptions);

@@ -3,7 +3,7 @@
 
 import type { Metadata } from "next";
 import { ThemeProvider as MuiThemeProvider, CssBaseline } from "@mui/material";
-import theme from "@/app/lib/theme";
+import theme from "@/src/app/lib/theme";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import "./globals.css";
 import '@fontsource/roboto/300.css';

@@ -1,11 +1,11 @@
 // app/auth/registracia/page.tsx
 
 import { Box, Typography, Divider } from '@mui/material';
-import ButtonGoogle from '@/app/auth/components/ButtonGoogle';
-import ButtonFacebook from '@/app/auth/components/ButtonFacebook';
-import ButtonInstagram from '@/app/auth/components/ButtonInstagram';
-import ButtonX from '@/app/auth/components/ButtonX';
-import ButtonEmail from '@/app/auth/components/ButtonEmail';
+import ButtonGoogle from '@/src/app/auth/components/ButtonGoogle';
+import ButtonFacebook from '@/src/app/auth/components/ButtonFacebook';
+import ButtonInstagram from '@/src/app/auth/components/ButtonInstagram';
+import ButtonX from '@/src/app/auth/components/ButtonX';
+import ButtonEmail from '@/src/app/auth/components/ButtonEmail';
 
 export default function RegisterPage() {
   return (

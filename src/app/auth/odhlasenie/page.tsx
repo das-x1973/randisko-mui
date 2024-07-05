@@ -1,7 +1,7 @@
 // app/auth/odhlasenie/page.tsx
 
 import { Box, Typography } from '@mui/material';
-import ButtonSignOut from '@/app/auth/components/ButtonSignOut';
+import ButtonSignOut from '@/src/app/auth/components/ButtonSignOut';
 
 export default function LogOutPage() {
   return (

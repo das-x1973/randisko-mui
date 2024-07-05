@@ -1,11 +1,11 @@
 // app/auth/prihlasenie/page.tsx
 
 import { Box, Typography, Divider } from '@mui/material';
-import ButtonGoogle from '@/app/auth/components/ButtonGoogle';
-import ButtonFacebook from '@/app/auth/components/ButtonFacebook';
-import ButtonInstagram from '@/app/auth/components/ButtonInstagram';
-import ButtonX from '@/app/auth/components/ButtonX';
-import ButtonCredentials from '@/app/auth/components/ButtonCredentials';
+import ButtonGoogle from '@/src/app/auth/components/ButtonGoogle';
+import ButtonFacebook from '@/src/app/auth/components/ButtonFacebook';
+import ButtonInstagram from '@/src/app/auth/components/ButtonInstagram';
+import ButtonX from '@/src/app/auth/components/ButtonX';
+import ButtonCredentials from '@/src/app/auth/components/ButtonCredentials';
 
 export default function SignInPage() {
   return (
